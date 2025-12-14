@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+
+<table width="548" height="159" border="1">
+  <tr>
+    <td width="55">Sl_no</td>
+    <td width="47">Name</td>
+    <td width="62">Email</td>
+    <td width="50">Ph_no</td>
+    <td width="58">Place</td>
+    <td width="35">Pin</td>
+    <td width="45">Post</td>
+    <td width="62">Image</td>
+    <td width="76">Product</td>
+  </tr>
+    {% for i in data %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>&nbsp;{{ i.name }}</td>
+    <td>{{ i.email }}&nbsp;</td>
+    <td>{{ i.ph_no }}</td>
+    <td>&nbsp;{{ i.place }}</td>
+    <td>{{ i.pin }}</td>
+    <td>&nbsp;{{ i.post }}</td>
+    <td><img src="{{ i.image }}"height="100"width="100"> </td>
+    <td><a href="/myapp/admin_viewproducts_order/{{ i.id }}">Products</a></td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+</body>
+</html>

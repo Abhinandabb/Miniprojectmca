@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/admin_view_complaints_post/">
+    {% csrf_token %}
+
+    <tr>
+      <td>From date</td>
+      <td><label for="textfield"></label>
+      <input type="date" name="textfield" id="textfield" /></td>
+      <td>To date</td>
+      <td><label for="textfield2"></label>
+      <input type="date" name="textfield2" id="textfield2" /></td>
+      <td><input type="submit" name="button" id="button" value="Search" /></td>
+    </tr>
+  </table>
+  <table width="381" border="1">
+    <tr>
+      <td width="43">sl_no</td>
+      <td width="33">date</td>
+         <td width="33">username</td>
+      <td width="61">complaint</td>
+      <td width="36">status</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.date }}</td>
+        <td>&nbsp;{{ i.User.name }}</td>
+      <td>{{ i.complaint}}</td>
+        <td>{{ i.status}}</td>
+      <td>{% if i.status == 'pending' %}<a href="/myapp/admin_send_reply/{{ i.id }}">reply</a>{% else %}{{ i.reply }}{% endif %}</td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>

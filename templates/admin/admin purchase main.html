@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="393" height="117" border="1">
+    <tr>
+      <td width="46" height="67">Sl_no</td>
+      <td width="57">Farmer</td>
+      <td width="49">Date</td>
+      <td width="74">Amount</td>
+      <td width="97">Status</td>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter }}</td>
+      <td>&nbsp;{{ i.Farmer.name }}</td>
+      <td>{{ i.date }}</td>
+      <td>{{ i.amount}}</td>
+        <td>{{ i.status}}</td>
+
+      <td><a href="/myapp/admin_purchase_sub/{{ i.id }}">more</a></td>
+    <td><a href="/myapp/payment1/{{ i.amount}}">payment</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+</html>
